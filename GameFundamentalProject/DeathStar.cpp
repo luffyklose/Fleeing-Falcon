@@ -41,7 +41,7 @@ void DeathStar::Update()
 		//std::cout << BulletInterval << std::endl;
 
 		//飞机碰到边缘改变飞行方向
-		if (DestRect.x <= 128 || DestRect.x >= 544)
+		if (DestRect.x <= 0 || DestRect.x >= 544)
 			{
 				DeathStarHorDirX = !DeathStarHorDirX;
 				//std::cout << "改变飞行方向!\n"<<DeathStarHorDir;

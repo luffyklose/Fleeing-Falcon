@@ -6,7 +6,6 @@
 
 void Falcon::Update()
 {
-	HP = 3;
 	SrcRect.w = 64;
 	SrcRect.h = 64;
 	SrcRect.x = 0;

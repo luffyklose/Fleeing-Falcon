@@ -16,6 +16,7 @@ public:
 		FalconBulletCD = BULLETCD;
 		FalconBulletInterval = 0;
 		tag = "Falcon";
+		HP = 3;
 	}
 	//~Falcon();
 

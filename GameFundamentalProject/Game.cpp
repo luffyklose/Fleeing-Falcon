@@ -213,7 +213,7 @@ void Game::Update()
 		{
 			for (int i = 0; i < (int)EnemyManager::Instance()->FighterVec.size(); i++)
 			{
-				if (EnemyManager::Instance()->FighterVec[i]->isCollidingWith(*PlayerFalcon))
+				if (EnemyManager::Instance()->FighterVec[i]->isCollidingWith(*PlayerFalcon)&& EnemyManager::Instance()->FighterVec[i]->tag.compare("DeathStar") != 0)
 				{
 				std::cout << "BOOM!" << std::endl;
 				PlayerFalcon->setActive(false);
@@ -303,11 +303,25 @@ void Game::Render()
 	//显示玩家分数
 	std::string Score= std::to_string(PLayerScore);
 	Score = "Score: " + Score;
-	const char* tmpText = Score.c_str();
-	TextManager::Instance()->LoadText(tmpText, 0, 0, 80, 30);
+	const char* tmpText1 = Score.c_str();
+	TextManager::Instance()->LoadText(tmpText1, 0, 0, 80, 30);
+
 	
 	AniManager::Instance()->AnimateSmoke();
 	SDL_RenderPresent(pRenderer);
+
+	if(PlayerFalcon==nullptr)
+	{
+		std::string GameOver = "GAME OVER";
+		const char* tmpText2 = GameOver.c_str();
+		TextManager::Instance()->LoadText(tmpText2, 150, 160, 500, 300);
+	}
+	if (GameState==StarDead)
+	{
+		std::string Win = "YOU WIN";
+		const char* tmpText3 = Win.c_str();
+		TextManager::Instance()->LoadText(tmpText3, 200, 160, 400, 300);
+	}
 }
 
 void Game::Clean()
